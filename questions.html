@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+  <script type="module" defer src="questions.js"></script>
+</head>
+<body style="background-color: black;">
+  <div class="logo">
+    <img src="./logo.png" alt="Logo">
+  </div>
+  <div class="container">
+    <h1>Quick Questionnaire</h1>
+    <form id="questionnaire">
+        <div class="question">
+            <label for="q1">1. How many bedrooms do you need in the house?</label>
+            <select id="q1" name="q1">
+              <option value="" disabled selected>Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4+</option>
+            </select>
+          </div>
+          
+          <div class="question">
+            <label for="q2">2. Do you already own the land for the house?</label>
+            <select id="q2" name="q2">
+              <option value="" disabled selected>Select</option>
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+              <option value="IN_PROCESS">In Process</option>
+            </select>
+          </div>
+          
+          <div class="question">
+            <label for="q3">3. How long do you plan to stay in the house?</label>
+            <select id="q3" name="q3">
+              <option value="" disabled selected>Select</option>
+              <option value="Less than 1 year">3-6 months</option>
+              <option value="1-5 years">6-12 months</option>
+              <option value="More than 5 years">More than 1 year</option>
+              <option value="Permanently">Permanently</option>
+            </select>
+          </div>          
+
+      <div class="question">
+        <label for="q4">4. Please enter your ZIP code:</label>
+        <input type="text" id="q4" name="q4" placeholder="Enter your ZIP code" maxlength="10" pattern="\d{5}(-\d{4})?" required>
+      </div>
+
+      <div class="question">
+        <label for="q5">4. Please enter your email address (optional):</label>
+        <input type="email" id="q5" name="q5" placeholder="Enter your email address" >
+      </div>
+      
+
+      <button type="submit">Submit, and we will contact you.</button>
+    </form>
+  </div>
+</body>
+</html>
