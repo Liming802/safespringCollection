@@ -40,11 +40,17 @@ document.getElementById("getQuoteButton").addEventListener("click", () => {
             return;
         }
 
-        // Retrieve the selected option (purchase/lease) from localStorage
-        const selectedOption = localStorage.getItem("selectedOption");
+        // Generate user-specific timestamp
+        function generateUserTimestamp() {
+            const now = new Date();
+            return `User_${now.toISOString().replace(/[:.]/g, '-')}`;
+        }
+
+        const userTimestamp = generateUserTimestamp();
+        localStorage.setItem("userTimestamp", userTimestamp);
 
         // Save the initial responses to Firebase
-        set(ref(db, `${selectedOption}/responses/step1`), initialAnswers)
+        set(ref(db, `${userTimestamp}/responses/step1`), initialAnswers)
             .then(() => {
                 // Replace the form with the next set of questions
                 document.getElementById("form-title").textContent = "Enter info";
@@ -64,7 +70,6 @@ document.getElementById("getQuoteButton").addEventListener("click", () => {
                     <button id="submitButton" type="submit">Submit, and we will contact you.</button>
                 `;
 
-                // Advance to the next step
                 step = 2;
 
                 // Add listener for the submit button
@@ -80,23 +85,21 @@ document.getElementById("getQuoteButton").addEventListener("click", () => {
 function handleSubmit(e) {
     e.preventDefault();
 
-    // Store the answers for the last two questions
     const finalAnswers = {
         q7: document.getElementById("q7").value,
         q8: document.getElementById("q8").value
     };
 
     // Validate ZIP code
-    if (!finalAnswers.q7) {
-        alert("Please provide a valid ZIP code.");
+    if (!/^\d{5}(-\d{4})?$/.test(finalAnswers.q7)) {
+        alert("Please provide a valid ZIP code in the format 12345 or 12345-6789.");
         return;
     }
 
-    // Retrieve the selected option (purchase/lease) from localStorage
-    const selectedOption = localStorage.getItem("selectedOption");
+    const userFolder = localStorage.getItem("userTimestamp");
 
     // Save the final responses to Firebase
-    set(ref(db, `${selectedOption}/responses/step2`), finalAnswers)
+    set(ref(db, `${userFolder}/responses/step2`), finalAnswers)
         .then(() => {
             alert("Thank you for completing the form! We will contact you soon.");
         })
