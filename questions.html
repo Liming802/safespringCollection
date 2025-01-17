@@ -13,54 +13,69 @@
   <div class="logo">
     <img src="./logo.png" alt="Logo">
   </div>
-  <div class="container">
-    <h1>Quick Questionnaire</h1>
+  <div class="container2">
+    <h1 id="form-title">Choose your options</h1>
     <form id="questionnaire">
-        <div class="question">
+        <div id="initial-questions">
+          <div class="question">
             <label for="q1">1. How many bedrooms do you need in the house?</label>
             <select id="q1" name="q1">
               <option value="" disabled selected>Select</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-              <option value="4+">4+</option>
             </select>
           </div>
-          
           <div class="question">
-            <label for="q2">2. Do you already own the land for the house?</label>
+            <label for="q2">2. Do you need to customize the internal layout?</label>
             <select id="q2" name="q2">
+              <option value="" disabled selected>Select</option>
+              <option value="Standard layout ($15k)">Standard layout ($15k)</option>
+              <option value="Customize internal layout ($25-35k)">Customize internal layout ($25-35k)</option>
+            </select>
+          </div>
+          <div class="question">
+            <label for="q3">3. Speed of delivery</label>
+            <select id="q3" name="q3">
+              <option value="" disabled selected>Select</option>
+              <option value="Standard delivery (within 3 months)">Standard delivery (within 3 months)</option>
+              <option value="Fastest delivery ($10k extra for delivery within 1 month)">Fastest delivery ($10k extra for delivery within 1 month)</option>
+            </select>
+          </div>
+          <div class="question">
+            <label for="q4">4. Do you need turn-key service?</label>
+            <p style="color: rgb(82, 82, 82); font-size: 11px; margin-top: 5px;">
+              Turn-key includes building permits, clearing the lot, installing the foundation, delivering and assembling the home, utility hookups, and more.
+            </p>
+            <select id="q4" name="q4">
+              <option value="" disabled selected>Select</option>
+              <option value="No, delivery only">No, delivery only</option>
+              <option value="Add turn-key  ($20k extra, add 1 month)">Add turn-key  ($20k extra, add 1 month)</option>
+            </select>
+          </div>
+          <div class="question">
+            <label for="q5">5. Do you already own the land for the house?</label>
+            <select id="q5" name="q5">
               <option value="" disabled selected>Select</option>
               <option value="YES">YES</option>
               <option value="NO">NO</option>
               <option value="IN_PROCESS">In Process</option>
             </select>
           </div>
-          
           <div class="question">
-            <label for="q3">3. How long do you plan to stay in the house?</label>
-            <select id="q3" name="q3">
+            <label for="q6">6. Are you interested in removal service?</label>
+            <select id="q6" name="q6">
               <option value="" disabled selected>Select</option>
-              <option value="Less than 1 year">3-6 months</option>
-              <option value="1-5 years">6-12 months</option>
-              <option value="More than 5 years">More than 1 year</option>
-              <option value="Permanently">Permanently</option>
+              <option value="Yes">Yes</option>
+              <option value="No, intent to keep house on property">No, intent to keep house on property</option>
             </select>
-          </div>          
-
-      <div class="question">
-        <label for="q4">4. Please enter your ZIP code:</label>
-        <input type="text" id="q4" name="q4" placeholder="Enter your ZIP code" maxlength="10" pattern="\d{5}(-\d{4})?" required>
-      </div>
-
-      <div class="question">
-        <label for="q5">4. Please enter your email address (optional):</label>
-        <input type="email" id="q5" name="q5" placeholder="Enter your email address" >
-      </div>
-      
-
-      <button type="submit">Submit, and we will contact you.</button>
-    </form>
+          </div>
+        </div>
+        <button id="getQuoteButton" type="button">Get quote</button>
+      </form>
   </div>
 </body>
+<footer style="text-align: center; padding: 20px; background-color: #222; color: #ccc; position: fixed; width: 100%; bottom: 0;">
+  <p>Contact us: <a href="mailto:safespringhousing@gmail.com" style="color: #66b2ff; text-decoration: none;">safespringhousing@gmail.com</a></p>
+</footer>
 </html>
